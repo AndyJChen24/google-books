@@ -44,12 +44,9 @@ function Books() {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.title) {
-      API.getBook({
-        title: formObject.title,
-        author: formObject.author,
-        synopsis: formObject.synopsis
-      })
-        .then(res => loadBooks())
+      API.searchBooks(formObject.title
+      )
+        .then(res => console.log(res))
         .catch(err => console.log(err));
     }
   };
