@@ -43,8 +43,8 @@ function Books() {
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.title && formObject.author) {
-      API.saveBook({
+    if (formObject.title) {
+      API.getBook({
         title: formObject.title,
         author: formObject.author,
         synopsis: formObject.synopsis
@@ -55,36 +55,31 @@ function Books() {
   };
 
     return (
+      // Search container
       <Container fluid>
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h1>What Books Should I Read?</h1>
+              <h1>(React) Google Books Search</h1>
+              <h2>Search books and Save Books of Interest</h2>
             </Jumbotron>
             <form>
+            <p>Book Search:</p>
               <Input
                 onChange={handleInputChange}
                 name="title"
                 placeholder="Title (required)"
               />
-              <Input
-                onChange={handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                onChange={handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
               <FormBtn
-                disabled={!(formObject.author && formObject.title)}
                 onClick={handleFormSubmit}
               >
-                Submit Book
+                Search Book
               </FormBtn>
             </form>
           </Col>
+
+
+
           <Col size="md-6 sm-12">
             <Jumbotron>
               <h1>Books On My List</h1>
